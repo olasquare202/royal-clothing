@@ -1,4 +1,6 @@
 import React from "react";
+import {Navigate} from 'react-router-dom'
+//import {useNavigate} from "react-router-dom"
 
 import FormInput from "../form-input/form-input.component";
 
@@ -8,13 +10,16 @@ import { auth, signInWithGoogle } from "../../firebase/firebase.utils";
 
 import './sign-in.styles.scss';
 
+
+
 export class SignIn extends React.Component{
+   
     constructor(props) {
         super(props);
 
         this.state = {
             email: '',
-            password: ''
+            password: '',
         };
     }
 
@@ -24,7 +29,13 @@ export class SignIn extends React.Component{
         const { email, password } = this.state;
 
         try {
-            await auth.signInWithEmailAndPassword(email, password);
+          const valuess =  await auth.signInWithEmailAndPassword(email, password);
+        //   //console.log(valuess)
+        //   if( valuess ) {
+        //     Navigate("/")
+        //   }
+
+           
         console.log("Success");
             this.setState({ email: '', password: '' });
 
@@ -39,6 +50,8 @@ export class SignIn extends React.Component{
        
        this.setState({ [name]: value });
     };
+
+
 
     render() {
         return(
@@ -72,7 +85,7 @@ export class SignIn extends React.Component{
                     <div className="buttons">
 
                     
-                    <CustomButton type="submit"> Sign In </CustomButton>
+                    <CustomButton  type="submit"> Sign In </CustomButton>
                     <CustomButton onClick={signInWithGoogle} isGoogleSignIn> 
                     
                     Sign in with Google 
@@ -86,17 +99,3 @@ export class SignIn extends React.Component{
 
 
  export default SignIn;
-// import React from "react";
-// export class SignIn extends React.Component{
-//     constructor(props){
-//        super(props)
-//     }
-
-//     render (){
-//         return (
-//             <div>
-//                 Hello world
-//             </div>
-//         )
-//     }
-// }
