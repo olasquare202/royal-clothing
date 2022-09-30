@@ -44,7 +44,6 @@
    
      return (
        <div> 
-        
         <Header  />
         {/* <Header currentUser={this.state.currentUser} /> */}
         <Routes>
