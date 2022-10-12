@@ -7,12 +7,15 @@
    import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
    //import Map from './Map';
    import HomePage from './pages/homepage/homepage.component';
-   import ShopPage  from './pages/shop/shop.component';
+   import CollectionPage from './pages/collection/collection.component';
+
+  // import ShopPage  from './pages/shop/shop.component';
    import Header from './components/header/header.component'
    import { SignInAndSignUpPage } from './pages/sign-in-and-sign-up/SignInAndSignUpPage';
    import CheckoutPage from './pages/checkout/checkout.component';
    import { setCurrentUser } from './redux/user/user.actions';
    import { selectCurrentUser} from './redux/user/user.selector'
+import CollectionsOverviewComponent from './components/collections-overview/collections-overview.component';
    class App extends React.Component {
      
    
@@ -51,8 +54,10 @@
         {/* <Header currentUser={this.state.currentUser} /> */}
         <Routes>
            <Route path = "/" element = {<HomePage/>}/>
-           <Route path='/shop' element={<ShopPage/>} /> 
+           {/* <Route path='/shop' element={<ShopPage/>} />  */}
            <Route path='/checkout' element={<CheckoutPage/>} /> 
+           <Route  path='/shop' element={<CollectionsOverviewComponent/>} />
+           <Route path= '/shop/:collectionId' element={<CollectionPage/>} /> 
             <Route 
            exact
            path='/signin'
